@@ -2,7 +2,11 @@ import { Eye, Share, ThumbsUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const UniqueBlog = async ({ params }: { params: { slug: string } }) => {
+const UniqueBlog = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
   const { slug } = await params;
   return (
     <article className="lg:px-36 w-full items-center mt-8 lg:mt-14 flex flex-col px-5">
