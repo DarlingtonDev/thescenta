@@ -1,76 +1,19 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import {
-  ArrowLeft,
-  Save,
-  Send,
-  Upload,
-  Image as ImageIcon,
-} from "lucide-react";
+import { useState, useRef } from "react";
+import { ArrowLeft, Save, Send, Image as ImageIcon } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 import "react-quill-new/dist/quill.snow.css";
-import { PostAction } from "../../../../../../lib/PostAction";
-import { uploadImage } from "../../../../../../lib/uploadImage";
 
 const NewPost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [isPublishing, setIsPublishing] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
   const postForm = useRef<HTMLFormElement | null>(null);
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setCoverImage(file);
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setImagePreview(e.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handlePublish = async () => {
-    if (!title.trim() || !content.trim() || !coverImage) {
-      alert(
-        "Please fill in title, content, and upload a cover image before publishing."
-      );
-      return;
-    }
-
-    setIsPublishing(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsPublishing(false);
-      alert("Post published successfully!");
-      // Reset form
-      setTitle("");
-      setContent("");
-      setCoverImage(null);
-      setImagePreview(null);
-    }, 1000);
-  };
-
-  const handleSaveDraft = async () => {
-    if (!title.trim() && !content.trim()) {
-      alert("Please add some content before saving.");
-      return;
-    }
-
-    setIsSaving(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSaving(false);
-      alert("Draft saved successfully!");
-    }, 1000);
-  };
 
   const quillModules = {
     toolbar: [
@@ -238,7 +181,6 @@ const NewPost = () => {
                     type="file"
                     id="coverImage"
                     accept="image/*"
-                    onChange={handleImageUpload}
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                     name="image"
                   />
@@ -294,30 +236,16 @@ const NewPost = () => {
             {/* Action Buttons */}
             <div className="flex items-center justify-between pt-6 border-t border-gray-200">
               <div className="flex items-center gap-3">
-                <button
-                  onClick={handleSaveDraft}
-                  disabled={isSaving || isPublishing}
-                  className="flex text-xs items-center gap-2 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-inter"
-                >
+                <button className="flex text-xs items-center gap-2 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-inter">
                   <Save className="w-3 h-3" />
-                  {isSaving ? "Saving..." : "Save as Draft"}
                 </button>
               </div>
 
               <button
-                disabled={
-                  isPublishing ||
-                  isSaving ||
-                  !title.trim() ||
-                  !content.trim() ||
-                  !coverImage
-                }
                 type="button"
                 className="cursor-pointer flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r bg-primary text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-inter text-xs shadow-sm"
-                onClick={ReplaceImageBlob}
               >
                 <Send className="w-3 h-3" />
-                {isPublishing ? "Publishing..." : "Publish Post"}
               </button>
             </div>
           </form>
