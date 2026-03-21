@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛍️ The Scenta – Premium Perfume Store
 
-## Getting Started
+The Scenta is a full-stack e-commerce platform for discovering and purchasing premium fragrances. Built with performance, scalability, and real-world usage in mind.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🌍 Live Application
+
+> (Add your deployed link here once live on Vercel)
+
+---
+
+## ✨ Core Features
+
+- Modern, responsive UI for all devices
+- Product catalog with dynamic routing
+- Detailed product pages
+- Backend-powered data (Django API)
+- Optimized performance with Next.js
+
+---
+
+## 🧱 Tech Stack
+
+### Frontend
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+
+### Backend
+
+- Django (REST API)
+
+### Deployment
+
+- Vercel (Frontend)
+- (Add backend hosting: e.g. Railway, Render, VPS)
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env.local` file in the root:
+
+```env id="q9o1n1"
+NEXT_PUBLIC_API_URL=https://your-backend-url.com
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started (Local Development)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Clone repository
 
-## Learn More
+```bash id="q1c9e5"
+git clone https://github.com/yourusername/thescenta.git
+cd thescenta
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Install dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash id="7gk6s2"
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Run development server
 
-## Deploy on Vercel
+```bash id="l2r4k9"
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+App runs on:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```id="z1n8p3"
+http://localhost:3000
+```
+
+---
+
+## 🔌 Backend Setup (Django)
+
+Ensure your backend server is running:
+
+```bash id="a7m2x6"
+python manage.py runserver
+```
+
+Default:
+
+```id="f3v8y0"
+http://127.0.0.1:8000
+```
+
+---
+
+## 🧠 Production Notes
+
+- Ensure API endpoints are secured
+- Configure CORS properly in Django
+- Use environment variables for all secrets
+- Optimize images and assets
+- Enable HTTPS on backend
+
+---
+
+## 📦 Roadmap
+
+- Shopping cart system
+- Checkout & payments (Paystack / Stripe)
+- User authentication & accounts
+- Order management system
+- Admin dashboard
+
+---
+
+## 🛡️ Status
+
+🚧 In active development — production-ready structure, features being expanded.
+
+---
+
+## 📄 License
+
+All rights reserved. This project is intended for commercial use.
