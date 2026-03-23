@@ -285,9 +285,31 @@ export default function SignupPage() {
 
                 <button
                   type="button"
-                  className="w-full border border-gray-300 rounded-lg py-3 text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors font-inter"
+                  className="w-full border border-gray-300 rounded-lg py-3 text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors font-inter flex items-center justify-center gap-2"
                   disabled={submitting}
                 >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      fill="#EA4335"
+                      d="M12 10.2v3.9h5.4c-.2 1.2-1.4 3.6-5.4 3.6-3.2 0-5.9-2.7-5.9-6s2.7-6 5.9-6c1.8 0 3.1.8 3.8 1.4l2.6-2.5C16.8 3.2 14.6 2.3 12 2.3 6.7 2.3 2.4 6.6 2.4 12s4.3 9.7 9.6 9.7c5.6 0 9.3-3.9 9.3-9.4 0-.6-.1-1.1-.1-1.6H12z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M3.5 7.5l3.2 2.3c.9-2.7 3.5-4.7 6.3-4.7 1.8 0 3.1.8 3.8 1.4l2.6-2.5C16.8 3.2 14.6 2.3 12 2.3 8 2.3 4.5 4.5 3.5 7.5z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M12 21.7c2.5 0 4.6-.8 6.2-2.2l-3-2.4c-.8.6-1.9 1-3.3 1-2.8 0-5.2-1.9-6.1-4.4L2.5 16c1.7 3.4 5.3 5.7 9.5 5.7z"
+                    />
+                    <path
+                      fill="#4285F4"
+                      d="M3.9 12c0-.8.1-1.6.4-2.2L1 7.5C.4 8.8 0 10.4 0 12s.4 3.2 1 4.5l3.3-2.3c-.3-.7-.4-1.4-.4-2.2z"
+                    />
+                  </svg>
                   Continue with Google
                 </button>
               </form>
