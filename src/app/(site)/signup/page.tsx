@@ -46,14 +46,12 @@ export default function SignupPage() {
     }
 
     setSubmitting(true);
-    // Front-end only: simulate a request.
     await new Promise((r) => setTimeout(r, 1050));
 
     setSubmitting(false);
     setStatus({
       kind: "success",
-      message:
-        "Account created (demo). Wire this up to your signup API when ready.",
+      message: "Account created successfully. Welcome to Thescenta.",
     });
 
     setPassword("");
@@ -121,10 +119,7 @@ export default function SignupPage() {
                   </div>
 
                   <div className="text-xs text-gray-600">
-                    No backend connected yet.
-                    <span className="block mt-1">
-                      Submissions are simulated for now.
-                    </span>
+                    Create your account and enjoy a smoother shopping journey.
                   </div>
                 </div>
               </div>

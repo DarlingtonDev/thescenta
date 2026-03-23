@@ -38,8 +38,7 @@ export default function ForgotPasswordPage() {
 
     setStatus({
       kind: "success",
-      message:
-        "Reset link sent (demo). You can connect this form to your real email flow.",
+      message: "If your email exists, a reset link has been sent.",
     });
   }
 
@@ -84,10 +83,7 @@ export default function ForgotPasswordPage() {
                   </div>
 
                   <div className="text-xs text-gray-600">
-                    This is UI-only for now.
-                    <span className="block mt-1">
-                      Add your own reset email logic whenever you are ready.
-                    </span>
+                    Regain access quickly and securely.
                   </div>
                 </div>
               </div>

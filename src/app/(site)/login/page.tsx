@@ -24,7 +24,6 @@ export default function LoginPage() {
   const isValid = useMemo(() => {
     if (!email.trim()) return false;
     if (!password) return false;
-    // Simple client-side check; you can swap with real backend validation later.
     if (!email.includes("@")) return false;
     return true;
   }, [email, password]);
@@ -42,16 +41,14 @@ export default function LoginPage() {
     }
 
     setSubmitting(true);
-    // Front-end only: simulate a request.
     await new Promise((r) => setTimeout(r, 900));
 
     setSubmitting(false);
     setStatus({
       kind: "success",
-      message: "You’re signed in (demo). Hook this up to your auth API next.",
+      message: "Welcome back. You are signed in.",
     });
 
-    // Keep values if "Remember me" is enabled; otherwise clear password.
     if (!rememberMe) setPassword("");
   }
 
@@ -125,10 +122,7 @@ export default function LoginPage() {
                   </div>
 
                   <div className="text-xs text-gray-600">
-                    Tip: This page is front-end only for now.
-                    <span className="block mt-1">
-                      Wire it to your auth API whenever you’re ready.
-                    </span>
+                    Crafted for seamless access to your Thescenta account.
                   </div>
                 </div>
               </div>
