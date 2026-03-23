@@ -38,7 +38,7 @@ const Header = () => {
               <Search className="w-4 h-4 hidden lg:block" />
             </Link>
 
-            <Link href="#" aria-label="user account">
+            <Link href="/login" aria-label="user account">
               <UserRound className="w-4 h-4" />
             </Link>
 

@@ -1,0 +1,300 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Eye, EyeOff, Lock, Mail, UserRound } from "lucide-react";
+
+type Status =
+  | { kind: "idle"; message: string }
+  | { kind: "error"; message: string }
+  | { kind: "success"; message: string };
+
+export default function SignupPage() {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState<Status>({
+    kind: "idle",
+    message: "",
+  });
+
+  const isValid = useMemo(() => {
+    if (!fullName.trim()) return false;
+    if (!email.trim()) return false;
+    if (!email.includes("@")) return false;
+    if (!password) return false;
+    if (password.length < 6) return false;
+    if (password !== confirmPassword) return false;
+    return true;
+  }, [confirmPassword, email, fullName, password]);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus({ kind: "idle", message: "" });
+
+    if (!isValid) {
+      setStatus({
+        kind: "error",
+        message:
+          "Please fill everything correctly (passwords must match, password should be at least 6 characters).",
+      });
+      return;
+    }
+
+    setSubmitting(true);
+    // Front-end only: simulate a request.
+    await new Promise((r) => setTimeout(r, 1050));
+
+    setSubmitting(false);
+    setStatus({
+      kind: "success",
+      message:
+        "Account created (demo). Wire this up to your signup API when ready.",
+    });
+
+    setPassword("");
+    setConfirmPassword("");
+  }
+
+  return (
+    <div className="min-h-[60dvh] bg-gray-50 font-inter px-4 lg:px-10 py-10">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+          {/* Left / Brand panel */}
+          <div className="hidden lg:flex">
+            <div className="w-full rounded-2xl border border-gray-200 bg-snow shadow-sm overflow-hidden depth">
+              <div className="relative h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-white to-white" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_30%,rgba(163,22,33,0.22),transparent_40%),radial-gradient(circle_at_90%_0%,rgba(163,22,33,0.10),transparent_45%)]" />
+                <div className="relative h-full p-10 flex flex-col justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-12 h-12">
+                      <Image
+                        src="/logo (2).png"
+                        alt="thescenta logo"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h1 className="font-poppins font-bold text-xl text-gray-900">
+                        Thescenta
+                      </h1>
+                      <p className="text-xs font-medium text-gray-600">
+                        Create your account
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 space-y-5">
+                    <div>
+                      <h2 className="font-semibold text-sm text-gray-900">
+                        Join for faster checkout
+                      </h2>
+                      <p className="mt-2 text-xs text-gray-600 leading-5">
+                        Save your preferences and keep your next order one click
+                        away.
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-gray-200 bg-white/70 p-4">
+                      <p className="text-xs font-semibold text-gray-900">
+                        Member-only offers
+                      </p>
+                      <p className="text-xs text-gray-600 mt-1">
+                        Get notified when new deals drop.
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-gray-200 bg-white/70 p-4">
+                      <p className="text-xs font-semibold text-gray-900">
+                        Order tracking
+                      </p>
+                      <p className="text-xs text-gray-600 mt-1">
+                        Simple updates from dispatch to delivery.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="text-xs text-gray-600">
+                    No backend connected yet.
+                    <span className="block mt-1">
+                      Submissions are simulated for now.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right / Form panel */}
+          <div className="flex">
+            <div className="w-full rounded-2xl border border-gray-200 bg-white shadow-sm p-6 sm:p-8 depth">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h2 className="font-semibold text-gray-900 text-lg">
+                    Sign up
+                  </h2>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Start with your details.
+                  </p>
+                </div>
+              </div>
+
+              {status.kind !== "idle" && (
+                <div
+                  className={[
+                    "mt-6 rounded-xl border p-4 text-sm",
+                    status.kind === "error"
+                      ? "bg-red-50 border-red-200 text-red-700"
+                      : "bg-green-50 border-green-200 text-green-700",
+                  ].join(" ")}
+                  role="status"
+                  aria-live="polite"
+                >
+                  {status.message}
+                </div>
+              )}
+
+              <form onSubmit={onSubmit} className="mt-6 space-y-4">
+                <div className="space-y-2">
+                  <label
+                    htmlFor="fullName"
+                    className="block text-xs font-medium text-gray-700"
+                  >
+                    Full name
+                  </label>
+                  <div className="relative">
+                    <UserRound className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <input
+                      id="fullName"
+                      name="fullName"
+                      type="text"
+                      autoComplete="name"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder="e.g. Adebayo Okoro"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none font-inter text-sm"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-xs font-medium text-gray-700"
+                  >
+                    Email
+                  </label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="you@example.com"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none font-inter text-sm"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    htmlFor="password"
+                    className="block text-xs font-medium text-gray-700"
+                  >
+                    Password
+                  </label>
+                  <div className="relative">
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <input
+                      id="password"
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                      autoComplete="new-password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="At least 6 characters"
+                      className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none font-inter text-sm"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword((v) => !v)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      aria-label={
+                        showPassword ? "Hide password" : "Show password"
+                      }
+                    >
+                      {showPassword ? (
+                        <EyeOff className="w-4 h-4" />
+                      ) : (
+                        <Eye className="w-4 h-4" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    htmlFor="confirmPassword"
+                    className="block text-xs font-medium text-gray-700"
+                  >
+                    Confirm password
+                  </label>
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    autoComplete="new-password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="Repeat your password"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none font-inter text-sm"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="cursor-pointer w-full bg-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-primary/90 transition-colors mt-2 font-inter disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {submitting ? "Creating..." : "Create account"}
+                </button>
+
+                <div className="text-center text-xs text-gray-600 pt-2">
+                  Already have an account?{" "}
+                  <Link href="/login" className="text-primary font-semibold">
+                    Sign in
+                  </Link>
+                </div>
+
+                <div className="flex items-center gap-3 pt-2">
+                  <div className="h-px flex-1 bg-gray-200" />
+                  <span className="text-[11px] text-gray-500 font-semibold">
+                    OR
+                  </span>
+                  <div className="h-px flex-1 bg-gray-200" />
+                </div>
+
+                <button
+                  type="button"
+                  className="w-full border border-gray-300 rounded-lg py-3 text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors font-inter"
+                  disabled={submitting}
+                >
+                  Continue with Google
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
