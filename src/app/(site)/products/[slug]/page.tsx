@@ -5,8 +5,8 @@ import Link from "next/link";
 type Props = Promise<{
   params: {
     slug: string;
-  }>;
-};
+  };
+}>;
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
