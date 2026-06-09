@@ -2,14 +2,14 @@ import ProductCard from "../../components/categoriesComponent/product";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {
+type Props = Promise<{
   params: {
     slug: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = params;
+  const { slug } = await params;
   const slug_name = slug.replaceAll("-", " ");
   return {
     title: `Buy ${slug_name} Online In Nigeria | Thescenta.`,
