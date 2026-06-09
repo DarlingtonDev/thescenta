@@ -3,13 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = params;
+  const { slug } = await params;
   const slug_name = slug.replaceAll("-", " ");
   return {
     title: `${slug_name} | Thescenta blog.`,
