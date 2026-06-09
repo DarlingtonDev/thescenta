@@ -2,6 +2,20 @@ import { Eye, Share, ThumbsUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = params;
+  const slug_name = slug.replaceAll("-", " ");
+  return {
+    title: `${slug_name} | Thescenta blog.`,
+    description: `Read perfume guides, tips and fragrance reviews on Thescenta blog.`,
+  };
+}
 const UniqueBlog = async ({
   params,
 }: {
@@ -18,10 +32,6 @@ const UniqueBlog = async ({
           How to Crack System Design Interviews in 2025? Preparation Tips,
           Questions and Resources
         </h1>
-        <p className="mt-4 font-inter lg:text-base text-sm text-gray-600">
-          Your guide to prepare for System design interviews in 2025 with
-          resources and get into FAANG
-        </p>
 
         <div className="lg:mt-4 mt-6 flex gap-y-5 lg:gap-10 font-inter text-[13px] flex-col lg:flex-row">
           <div className="flex gap-1 items-center">

@@ -1,6 +1,22 @@
 import ProductCard from "../../components/categoriesComponent/product";
 import Image from "next/image";
 import Link from "next/link";
+
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = params;
+  const slug_name = slug.replaceAll("-", " ");
+  return {
+    title: `Buy ${slug_name} Online In Nigeria | Thescenta.`,
+    description: `Shop for ${slug_name} at Thescenta. Original long-lasting perfumes with fas deliveries across Nigeria.`,
+  };
+}
+
 const UniqueProduct = async ({
   params,
 }: {

@@ -4,6 +4,7 @@ import {
   ArrowUp,
   Ellipsis,
   EllipsisIcon,
+  Eye,
   Funnel,
 } from "lucide-react";
 import formatNumber from "../../../../lib/format";
@@ -64,7 +65,7 @@ const AdminHome = () => {
       <div className=" w-[24%] border border-gray-300 bg-white rounded-md py-4 px-3 ">
         <div className="w-full flex justify-between items-center font-inter text-gray-500 text-[11px] font-medium">
           <p>{type}</p>
-          <Ellipsis className="w-4 h-4 text-black" />
+          {/* <Ellipsis className="w-4 h-4 text-black" /> */}
         </div>
 
         <h2 className="mt-3 text-lg font-bold font-inter">
@@ -73,12 +74,12 @@ const AdminHome = () => {
             : amount}
         </h2>
 
-        <div className="mt-4 w-full flex gap-x-2">
+        {/* <div className="mt-4 w-full flex gap-x-2">
           <Percentage />
           <p className="font-inter text-gray-500 text-[11px]">
             in the last month
           </p>
-        </div>
+        </div> */}
       </div>
     );
   };
@@ -91,10 +92,13 @@ const AdminHome = () => {
             className="w-1.5 h-1.5 rounded-[50%]"
             style={{ backgroundColor: "#0088FE" }}
           ></div>
-          <p>Website</p>
+          <p>Lagos</p>
         </div>
 
-        <p className="font-semibold">₦{formatNumber(1200000)}</p>
+        <p className="font-semibold flex items-center gap-x-2">
+          <Eye className="w-4 h-4" />
+          3400
+        </p>
       </div>
     );
   };
@@ -175,8 +179,51 @@ const AdminHome = () => {
         />
       </div>
 
-      <div className="flex gap-x-3">
-        <div className="w-[60%] border min-h-64 bg-white border-gray-300 rounded-md px-3 py-4 font-inter text-[11px]">
+      <div className="flex gap-x-3 items-start">
+        <div className="w-[60%] flex pb-4 gap-x-3">
+          <div className="w-full border border-gray-300  rounded-md bg-white">
+            <div className="flex items-center justify-between p-3">
+              <h2 className="font-semibold font-inter text-sm">
+                Recent Products
+              </h2>
+              <button className="flex gap-x-1 items-center font-inter text-gray-600 text-[11px] font-medium border rounded-md px-2 py-1 border-gray-200">
+                <Funnel className="w-3 h-3" />
+                <p>Filter</p>
+              </button>
+            </div>
+
+            <div className="w-full flex border-t border-gray-200 mt-2 font-inter text-xs text-gray-500 py-1.5 gap-x-2">
+              <div className="w-[30%] flex px-2 gap-x-2 items-center ">
+                <input type="checkbox" className="cursor-pointer" />
+                <p>Product Name</p>
+              </div>
+
+              <div className="w-[20%] flex px-2 ">
+                <p>Price</p>
+              </div>
+
+              <div className="w-[20%] flex px-2  gap-x-2 ">
+                <p>Category</p>
+              </div>
+
+              <div className="w-[20%] flex px-2  gap-x-2">
+                <p>Quantity</p>
+              </div>
+
+              <div className="w-[10%] flex px-2  gap-x-2">
+                <p>Action</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col">
+              <ProductsAdmin />
+              <ProductsAdmin />
+              <ProductsAdmin />
+              <ProductsAdmin />
+            </div>
+          </div>
+        </div>
+        {/* <div className="w-[60%] border min-h-64 bg-white border-gray-300 rounded-md px-3 py-4 font-inter text-[11px]">
           <div className="flex items-center gap-x-5">
             <p className=" text-sm font-semibold">Sales</p>
 
@@ -214,7 +261,7 @@ const AdminHome = () => {
               </LineChart>
             </ResponsiveContainer>
           </div>
-        </div>
+        </div> */}
 
         <div className="w-[20%] border bg-white border-gray-300 rounded-md px-4 py-4">
           <h2 className="font-inter font-semibold text-sm">
@@ -237,7 +284,9 @@ const AdminHome = () => {
         </div>
 
         <div className="w-[20%] border bg-white border-gray-300 rounded-md p-4">
-          <h2 className="font-inter font-semibold text-sm">Total Sales</h2>
+          <h2 className="font-inter font-semibold text-sm">
+            Most Viewed By Location
+          </h2>
 
           <div className="min-h-[120px]">
             <PiechartClient />
@@ -248,103 +297,6 @@ const AdminHome = () => {
             <Channels />
             <Channels />
             <Channels />
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-6 w-full flex pb-4 gap-x-3">
-        <div className="w-[65%] border border-gray-300  rounded-md bg-white">
-          <div className="flex items-center justify-between p-3">
-            <h2 className="font-semibold font-inter text-sm">
-              Recent Products
-            </h2>
-            <button className="flex gap-x-1 items-center font-inter text-gray-600 text-[11px] font-medium border rounded-md px-2 py-1 border-gray-200">
-              <Funnel className="w-3 h-3" />
-              <p>Filter</p>
-            </button>
-          </div>
-
-          <div className="w-full flex border-t border-gray-200 mt-2 font-inter text-xs text-gray-500 py-1.5 gap-x-2">
-            <div className="w-[30%] flex px-2 gap-x-2 items-center ">
-              <input type="checkbox" className="cursor-pointer" />
-              <p>Product Name</p>
-            </div>
-
-            <div className="w-[20%] flex px-2 ">
-              <p>Price</p>
-            </div>
-
-            <div className="w-[20%] flex px-2  gap-x-2 ">
-              <p>Category</p>
-            </div>
-
-            <div className="w-[20%] flex px-2  gap-x-2">
-              <p>Quantity</p>
-            </div>
-
-            <div className="w-[10%] flex px-2  gap-x-2">
-              <p>Action</p>
-            </div>
-          </div>
-
-          <div className="flex flex-col">
-            <ProductsAdmin />
-            <ProductsAdmin />
-            <ProductsAdmin />
-            <ProductsAdmin />
-            <ProductsAdmin />
-            <ProductsAdmin />
-          </div>
-        </div>
-
-        <div className="w-[35%] border border-gray-300  rounded-md bg-white p-3 relative">
-          <div>
-            <h2 className="font-semibold font-inter text-sm">Monthly Target</h2>
-            <p className="font-inter text-xs mt-2 text-gray-600">
-              Target that you have set for this month
-            </p>
-          </div>
-
-          <svg viewBox="0 0 100 58" className="mt-4 ">
-            <path
-              d="M10 50 A40 40 0 0 1 90 50"
-              fill="none"
-              stroke="#dbdddf"
-              strokeWidth={5.3}
-              strokeLinecap="round"
-            />
-
-            <path
-              d="M10 50 A30 30 0 0 1 90 50"
-              fill="none"
-              stroke="#a31621"
-              strokeWidth={5.3}
-              strokeLinecap="round"
-              pathLength={100}
-              strokeDasharray="75.34 100"
-              strokeDashoffset={0}
-            />
-          </svg>
-
-          <h2 className="absolute top-40 font-inter tex left-1/2 -translate-x-1/2 text-lg font-semibold">
-            75.34%
-          </h2>
-
-          <button className="absolute top-48 font-inter tex left-1/2 -translate-x-1/2 text-gray-500 font-semibold text-xs border border-gray-300 px-2 py-1 rounded-sm">
-            +12%
-          </button>
-
-          <div className="flex w-full flex-col items-center ">
-            <p className="text-[13px] text-center text-gray-600 font-inter font-medium">
-              You have earned ₦184,500 today. You are ₦435,000 closer to meeting
-              your target
-            </p>
-
-            <div className="flex w-full border-t border-gray-200 mt-5 py-2  items-center gap-x-4 font-inter font-medium">
-              <Target type="Target" amount="700,000" level="decrease" />
-              <Target type="Revenue" amount="370,000" level="increase" />
-              <Target type="Today" amount="184,500" level="increase" />
-            </div>
           </div>
         </div>
       </div>

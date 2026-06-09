@@ -12,7 +12,6 @@ import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   const path = usePathname();
-  console.log(path);
   return (
     <aside className="w-[15%] fixed left-8 top-20 bottom-0  h-vh flex flex-col gap-5">
       <Link

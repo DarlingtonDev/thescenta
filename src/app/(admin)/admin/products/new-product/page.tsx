@@ -1,5 +1,11 @@
 "use client";
-import { ArrowLeft, ChevronDown, Image as ImgLucide, X } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronDown,
+  ChevronLeft,
+  Image as ImgLucide,
+  X,
+} from "lucide-react";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import "react-quill-new/dist/quill.snow.css";
@@ -10,10 +16,43 @@ import Link from "next/link";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 const NewProduct = () => {
   const [value, setValue] = useState<string>("");
+  const [image, setImage] = useState<string>("");
+  const imageviewUploader = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const previewUrl = URL.createObjectURL(file);
+      setImage(previewUrl);
+    }
+  };
   return (
     <div className="ml-[15%] px-6 w-[85%] bg-gray-50 mt-14 py-6">
-      <div className="flex justify-between items-center font-inter">
+      <Link
+        href="/admin/products"
+        className="underline text-[13px] font-medium text-primary flex items-center "
+      >
+        <ChevronLeft className="w-5 h-5" />
+        Back to products
+      </Link>
+      <div className="flex justify-between items-center font-inter mt-4">
         <h2 className="font-semibold text-[15px]">Add Product</h2>
+        <div className="flex gap-x-4 text-[13px] capitalize font-bold">
+          <button
+            type="submit"
+            className="bg-primary px-5 text-white py-1.5 cursor-pointer rounded-md"
+            name="action"
+            value="save"
+          >
+            Save
+          </button>
+          <button
+            type="submit"
+            className="bg-gray-600 px-5 text-white py-0.5 rounded-md cursor-pointer"
+            name="action"
+            value="draft"
+          >
+            Draft
+          </button>
+        </div>
       </div>
 
       <form className="flex gap-x-4 mt-6">
@@ -180,6 +219,7 @@ const NewProduct = () => {
                   className="w-24 h-24 flex border border-dashed rounded-md mt-2  justify-center items-center"
                 >
                   <ImgLucide className="text-gray-600 cursor-pointer" />
+                  {image && <img src={image} alt="product-image" />}
 
                   <input
                     type="file"
@@ -187,6 +227,8 @@ const NewProduct = () => {
                     id="file-upload"
                     className="outline-0 border border-gray-200  px-3 py-2.5 rounded-md font-inter text-xs hidden"
                     name="image"
+                    accept="image/*"
+                    onChange={imageviewUploader}
                   />
                 </label>
               </div>
@@ -257,12 +299,6 @@ const NewProduct = () => {
             </div>
           </div>
         </div>
-        <button type="submit" className="hidden" name="action" value="save">
-          submit
-        </button>
-        <button type="submit" className="hidden" name="action" value="draft">
-          draft
-        </button>
       </form>
     </div>
   );

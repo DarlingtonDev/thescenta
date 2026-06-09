@@ -6,10 +6,10 @@ export default function middleware(request: NextRequest) {
   if (cart && userAuth) {
     NextResponse.next();
   } else {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 }
 
 export const config = {
-  matcher: ["/checkout", "/admin"],
+  matcher: ["/checkout/:path*", "/admin/:path*"],
 };

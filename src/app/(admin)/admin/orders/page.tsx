@@ -6,7 +6,7 @@ const Order = () => {
   const OrderList = () => {
     return (
       <div className="w-full flex border-b border-gray-200 mt-2 font-inter py-1  items-center">
-        <div className="flex gap-x-2 px-2 items-center w-[20%]">
+        {/* <div className="flex gap-x-2 px-2 items-center w-[20%]">
           <div className="w-[20%] shrink-0">
             <Image
               src="/burbery.webp"
@@ -20,15 +20,15 @@ const Order = () => {
           <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium w-[80%] ">
             Paris Corner Burberry Goddess EDP 100ml
           </p>
-        </div>
+        </div> */}
 
-        <div className="w-[20%]   px-2">
+        <div className="w-[25%]   px-2">
           <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium">
             Adamu Yusuf Babangida
           </p>
         </div>
 
-        <div className="w-[20%]   px-2">
+        <div className="w-[25%]   px-2">
           <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium">
             #100037656243
           </p>
@@ -44,7 +44,7 @@ const Order = () => {
             Completed
           </p>
         </div>
-        <div className="w-[10%]  flex justify-center px-2">
+        <div className="w-[20%]  flex justify-center px-2">
           <EllipsisIcon className="w-4 h-4" />
         </div>
       </div>
@@ -144,15 +144,15 @@ const Order = () => {
         </div>
 
         <div className="border-b border-gray-300 flex w-full font-inter text-xs font-medium py-3 items-center bg-gray-100">
-          <div className="w-[20%] flex px-2 gap-x-2 items-center ">
+          {/* <div className="w-[20%] flex px-2 gap-x-2 items-center ">
             <p>Product Name</p>
-          </div>
+          </div> */}
 
-          <div className="w-[20%] flex px-2 ">
+          <div className="w-[25%] flex px-2">
             <p>Customer Name</p>
           </div>
 
-          <div className="w-[20%] flex px-2   ">
+          <div className="w-[25%] flex px-2   ">
             <p>Order ID</p>
           </div>
 
@@ -164,7 +164,7 @@ const Order = () => {
             <p>Status</p>
           </div>
 
-          <div className="w-[10%] flex px-2  justify-center ">
+          <div className="w-[20%] flex px-2  justify-center ">
             <p>Action</p>
           </div>
         </div>
