@@ -2,11 +2,11 @@ import ProductCard from "../../components/categoriesComponent/product";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = Promise<{
-  params: {
+type Props = {
+  params: Promise<{
     slug: string;
-  };
-}>;
+  }>;
+};
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
