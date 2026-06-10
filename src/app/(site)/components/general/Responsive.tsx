@@ -63,11 +63,13 @@ const ResponsiveNavbar = () => {
           navopen && "animate-enter delay-1000"
         }`}
       >
-  <Link href="/wishlist" aria-label="view wishlist">
+  
             <button className="w-[50%] py-3 border-t border-r border-gray-300">
+       <Link href="/wishlist" aria-label="view wishlist">
           WISHLIST
+        </Link>
         </button>
-            </Link>
+            
       
         <button className="w-[50%] py-3 border-t border-gray-300">MAIL</button>
       </div>
