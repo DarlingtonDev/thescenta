@@ -65,7 +65,7 @@ const ResponsiveNavbar = () => {
       >
   
             <button className="w-[50%] py-3 border-t border-r border-gray-300">
-       <Link href="/wishlist" aria-label="view wishlist">
+       <Link href="/wishlist" aria-label="view wishlist" onClick={toggleNav}>
           WISHLIST
         </Link>
         </button>
