@@ -1,6 +1,6 @@
 "use client";
 
-import { Pie, Cell, PieChart } from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const dataPie = [
@@ -11,22 +11,26 @@ const dataPie = [
 ];
 const Piechart = () => {
   return (
-    <PieChart width={190} height={120} className="mt-2 outline-0 ">
-      <Pie
-        data={dataPie}
-        cx="50%"
-        cy="50%"
-        innerRadius={40}
-        outerRadius={60}
-        fill="#8884d8"
-        paddingAngle={5}
-        dataKey="value"
-      >
-        {dataPie.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-    </PieChart>
+    <div className="w-full h-[120px] mt-2">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart className="outline-0">
+          <Pie
+            data={dataPie}
+            cx="50%"
+            cy="50%"
+            innerRadius={40}
+            outerRadius={60}
+            fill="#8884d8"
+            paddingAngle={5}
+            dataKey="value"
+          >
+            {dataPie.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

@@ -62,7 +62,7 @@ const AdminHome = () => {
       );
     };
     return (
-      <div className=" w-[24%] border border-gray-300 bg-white rounded-md py-4 px-3 ">
+      <div className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[24%] border border-gray-300 bg-white rounded-md py-4 px-3">
         <div className="w-full flex justify-between items-center font-inter text-gray-500 text-[11px] font-medium">
           <p>{type}</p>
           {/* <Ellipsis className="w-4 h-4 text-black" /> */}
@@ -136,7 +136,7 @@ const AdminHome = () => {
     level: "increase" | "decrease";
   }) => {
     return (
-      <div className="w-[32%] flex gap-y-2 flex-col items-center mt-4">
+      <div className="w-full sm:w-[32%] flex gap-y-2 flex-col items-center mt-4">
         <h2 className="text-gray-600 text-xs">{type}</h2>
 
         <div className="flex gap-x-1.5 items-center ">
@@ -151,8 +151,8 @@ const AdminHome = () => {
     );
   };
   return (
-    <div className="ml-[15%] px-4 w-[85%] bg-gray-50 mt-14 py-3">
-      <div className="w-full flex gap-x-4 items-center py-4">
+    <div className="w-full lg:ml-[15%] lg:w-[85%] px-4 sm:px-6 bg-gray-50 mt-14 py-3">
+      <div className="w-full flex flex-wrap gap-4 items-center py-4">
         <SalesCard
           type="Total Sales"
           amount="350000"
@@ -179,9 +179,9 @@ const AdminHome = () => {
         />
       </div>
 
-      <div className="flex gap-x-3 items-start">
-        <div className="w-[60%] flex pb-4 gap-x-3">
-          <div className="w-full border border-gray-300  rounded-md bg-white">
+      <div className="flex flex-col xl:flex-row gap-3 items-start">
+        <div className="w-full xl:w-[60%] flex pb-4">
+          <div className="w-full border border-gray-300 rounded-md bg-white">
             <div className="flex items-center justify-between p-3">
               <h2 className="font-semibold font-inter text-sm">
                 Recent Products
@@ -192,7 +192,7 @@ const AdminHome = () => {
               </button>
             </div>
 
-            <div className="w-full flex border-t border-gray-200 mt-2 font-inter text-xs text-gray-500 py-1.5 gap-x-2">
+            <div className="hidden lg:flex w-full border-t border-gray-200 mt-2 font-inter text-xs text-gray-500 py-1.5 gap-x-2">
               <div className="w-[30%] flex px-2 gap-x-2 items-center ">
                 <input type="checkbox" className="cursor-pointer" />
                 <p>Product Name</p>
@@ -263,12 +263,12 @@ const AdminHome = () => {
           </div>
         </div> */}
 
-        <div className="w-[20%] border bg-white border-gray-300 rounded-md px-4 py-4">
+        <div className="w-full xl:w-[20%] border bg-white border-gray-300 rounded-md px-4 py-4">
           <h2 className="font-inter font-semibold text-sm">
             Sales By Location
           </h2>
 
-          <div className="w-full h-30 mt-3 relative">
+          <div className="w-full h-30 mt-3 relative min-h-[120px]">
             <div className="w-1.5 h-1.5 top-10 left-6 absolute rounded-[50%] bg-black z-20"></div>
             <div className="w-1.5 h-1.5 absolute rounded-[50%] bg-black z-20 top-1/2 -translate-y-1/2 left-1/2"></div>
             <div className="w-1.5 h-1.5 absolute rounded-[50%] bg-black z-20 top-1/2 left-12"></div>
@@ -283,7 +283,7 @@ const AdminHome = () => {
           </div>
         </div>
 
-        <div className="w-[20%] border bg-white border-gray-300 rounded-md p-4">
+        <div className="w-full xl:w-[20%] border bg-white border-gray-300 rounded-md p-4">
           <h2 className="font-inter font-semibold text-sm">
             Most Viewed By Location
           </h2>

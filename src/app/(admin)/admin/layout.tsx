@@ -3,8 +3,7 @@ import "../../globals.css";
 import { Inter } from "next/font/google";
 import { Poppins } from "next/font/google";
 import { Noto_Sans_Old_Persian } from "next/font/google";
-import Sidebar from "../components/sidebar";
-import Header from "../components/Header";
+import AdminShell from "../components/AdminShell";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -37,11 +36,7 @@ const Adminlayout = ({ children }: { children: React.ReactNode }) => {
       className={`${inter.variable} ${poppins.variable} ${noto_sans.variable}`}
     >
       <body>
-        <Header />
-        <main className="flex relative">
-          <Sidebar />
-          {children}
-        </main>
+        <AdminShell>{children}</AdminShell>
       </body>
     </html>
   );

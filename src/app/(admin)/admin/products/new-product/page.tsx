@@ -25,7 +25,7 @@ const NewProduct = () => {
     }
   };
   return (
-    <div className="ml-[15%] px-6 w-[85%] bg-gray-50 mt-14 py-6">
+    <div className="w-full lg:ml-[15%] lg:w-[85%] px-4 sm:px-6 bg-gray-50 mt-14 py-6">
       <Link
         href="/admin/products"
         className="underline text-[13px] font-medium text-primary flex items-center "
@@ -33,9 +33,9 @@ const NewProduct = () => {
         <ChevronLeft className="w-5 h-5" />
         Back to products
       </Link>
-      <div className="flex justify-between items-center font-inter mt-4">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 font-inter mt-4">
         <h2 className="font-semibold text-[15px]">Add Product</h2>
-        <div className="flex gap-x-4 text-[13px] capitalize font-bold">
+        <div className="flex flex-wrap gap-2 sm:gap-x-4 text-[13px] capitalize font-bold">
           <button
             type="submit"
             className="bg-primary px-5 text-white py-1.5 cursor-pointer rounded-md"
@@ -55,8 +55,8 @@ const NewProduct = () => {
         </div>
       </div>
 
-      <form className="flex gap-x-4 mt-6">
-        <div className="w-[50%] ">
+      <form className="flex flex-col lg:flex-row gap-4 mt-6">
+        <div className="w-full lg:w-[50%]">
           <div className="w-full ">
             <h2 className="text-sm font-inter font-medium">Description</h2>
 
@@ -164,7 +164,7 @@ const NewProduct = () => {
           <div className="w-full mt-4">
             <h2 className="text-sm font-inter font-medium">Inventory</h2>
 
-            <div className="bg-white border border-gray-200 w-full rounded-md px-3 py-4 mt-2 font-inter font-medium  flex gap-x-4">
+            <div className="bg-white border border-gray-200 w-full rounded-md px-3 py-4 mt-2 font-inter font-medium flex flex-col sm:flex-row gap-4">
               <div className="flex flex-col gap-y-1">
                 <label
                   htmlFor=""
@@ -201,7 +201,7 @@ const NewProduct = () => {
           </div>
         </div>
 
-        <div className="w-[50%] ">
+        <div className="w-full lg:w-[50%]">
           <div className="w-full ">
             <h2 className="text-sm font-inter font-medium">Product Image</h2>
 
@@ -263,7 +263,7 @@ const NewProduct = () => {
           <div className="w-full mt-6">
             <h2 className="text-sm font-inter font-medium">Pricing</h2>
 
-            <div className="bg-white border border-gray-200 w-full rounded-md px-3 py-4 mt-2 font-inter font-medium  flex gap-x-4">
+            <div className="bg-white border border-gray-200 w-full rounded-md px-3 py-4 mt-2 font-inter font-medium flex flex-col sm:flex-row gap-4">
               <div className="flex flex-col gap-y-1">
                 <label
                   htmlFor=""

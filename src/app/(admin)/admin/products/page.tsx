@@ -44,60 +44,100 @@ const Products = async () => {
     quantity,
   }: ProductRowType) => {
     return (
-      <div className="w-full flex border-t border-gray-200  font-inter py-2  items-center">
-        <div className="flex gap-x-2 px-2 items-center w-[35%]">
-          <input type="checkbox" />
-          <div className="w-[10%] shrink-0">
-            <Image
-              src={imageUrl}
-              alt="burbery"
-              width={500}
-              height={500}
-              className="w-full h-auto "
-            />
+      <>
+        <div className="lg:hidden border-t border-gray-200 px-4 py-3 font-inter">
+          <div className="flex items-start justify-between gap-2">
+            <div className="flex gap-2 items-center min-w-0 flex-1">
+              <input type="checkbox" />
+              <div className="w-10 shrink-0">
+                <Image
+                  src={imageUrl}
+                  alt="burbery"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto"
+                />
+              </div>
+              <p className="text-[11px] font-inter font-medium text-gray-700 line-clamp-2">
+                {title}
+              </p>
+            </div>
+            <EllipsisIcon className="w-4 h-4 shrink-0" />
+          </div>
+          <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-[11px] font-inter font-medium text-gray-700">
+            <p>
+              <span className="text-gray-500">Price: </span>₦{formatNumber(price)}
+            </p>
+            <p>
+              <span className="text-gray-500">Category: </span>
+              {category} Perfume
+            </p>
+            <p>
+              <span className="text-gray-500">Status: </span>
+              {!draft ? "Active" : "Draft"}
+            </p>
+            <p>
+              <span className="text-gray-500">Quantity: </span>
+              {quantity} in stock
+            </p>
+          </div>
+        </div>
+
+        <div className="hidden lg:flex w-full border-t border-gray-200 font-inter py-2 items-center">
+          <div className="flex gap-x-2 px-2 items-center w-[35%]">
+            <input type="checkbox" />
+            <div className="w-[10%] shrink-0">
+              <Image
+                src={imageUrl}
+                alt="burbery"
+                width={500}
+                height={500}
+                className="w-full h-auto "
+              />
+            </div>
+
+            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium w-[80%] text-gray-700">
+              {title}
+            </p>
           </div>
 
-          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium w-[80%] text-gray-700">
-            {title}
-          </p>
-        </div>
+          <div className="w-[15%] text-gray-700  px-2">
+            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium">
+              ₦{formatNumber(price)}
+            </p>
+          </div>
 
-        <div className="w-[15%] text-gray-700  px-2">
-          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium">
-            ₦{formatNumber(price)}
-          </p>
-        </div>
+          <div className="w-[20%] text-gray-700  px-2">
+            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium">
+              {category} Perfume
+            </p>
+          </div>
 
-        <div className="w-[20%] text-gray-700  px-2">
-          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium">
-            {category} Perfume
-          </p>
+          <div className="w-[10%] text-gray-700  px-2">
+            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium">
+              {!draft ? "Active" : "Draft"}
+            </p>
+          </div>
+          <div className="w-[10%] text-gray-700  px-2">
+            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium">
+              {quantity} in stock
+            </p>
+          </div>
+          <div className="w-[10%]  flex justify-center px-2">
+            <EllipsisIcon className="w-4 h-4" />
+          </div>
         </div>
-
-        <div className="w-[10%] text-gray-700  px-2">
-          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium">
-            {!draft ? "Active" : "Draft"}
-          </p>
-        </div>
-        <div className="w-[10%] text-gray-700  px-2">
-          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-inter font-medium">
-            {quantity} in stock
-          </p>
-        </div>
-        <div className="w-[10%]  flex justify-center px-2">
-          <EllipsisIcon className="w-4 h-4" />
-        </div>
-      </div>
+      </>
     );
   };
 
   return (
-    <div className="ml-[15%] px-6 w-[85%] bg-gray-50 mt-14 py-6">
+    <div className="w-full lg:ml-[15%] lg:w-[85%] px-4 sm:px-6 bg-gray-50 mt-14 py-6">
       <div className="w-full min-h-96 bg-white border border-gray-300 rounded-md">
-        <div className="flex items-center justify-between py-4 font-inter px-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 py-4 font-inter px-4">
           <h2 className="text-sm font-medium">Products List</h2>
 
-          <div className="flex items-center gap-x-4 text-sm w-[40%] justify-end">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-x-4 text-sm w-full sm:w-auto sm:justify-end">
             <Filter />
             <Link href="/admin/products/new-product">
               <button className="text-xs  bg-primary text-white px-1.5 py-1.5 rounded-sm flex items-center gap-x-1 cursor-pointer">
@@ -111,7 +151,7 @@ const Products = async () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 flex w-full font-inter text-xs font-medium text-gray-600 py-3 items-center">
+        <div className="hidden lg:flex border-t border-gray-200 w-full font-inter text-xs font-medium text-gray-600 py-3 items-center">
           <div className="w-[35%] flex px-2 gap-x-2 items-center ">
             <input type="checkbox" className="cursor-pointer" />
             <p>Product Name</p>
